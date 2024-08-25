@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+        }
+
+        .profile-section {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .repo-section {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            max-height: 500px;
+        }
+
+        .repo-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-avatar {
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .profile-header h2 {
+            margin: 10px 0;
+            font-size: 22px;
+        }
+
+        .profile-header p {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .profile-details p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .repo-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .repo-item:hover {
+            background-color: #e9e9e9;
+        }
+
+        .repo-item a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .repo-item p {
+            margin: 8px 0 0;
+            color: #555;
+        }
+
+        .repo-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="profile-section">
+        <div class="profile-header">
+            <img th:src="${avatar_url}" alt="User Avatar" class="profile-avatar" width="120" height="120">
+            <h2 th:text="${name}">User Name</h2>
+            <p th:text="'GitHub Profile: ' + ${login}">GitHub Profile: user_login</p>
+            <p th:text="${bio}">User Bio</p>
+        </div>
+
+        <div class="profile-details">
+            <p><strong>Company:</strong> <span th:text="${company}">Company Name</span></p>
+            <p><strong>Blog:</strong> <a th:href="${blog}" th:text="${blog}">Blog URL</a></p>
+            <p><strong>Location:</strong> <span th:text="${location}">Location</span></p>
+            <p><strong>Email:</strong> <a th:href="'mailto:' + ${email}" th:text="${email}">Email</a></p>
+            <p><strong>Public Repositories:</strong> <span th:text="${public_repos}">0</span></p>
+            <p><strong>Followers:</strong> <span th:text="${followers}">0</span></p>
+            <p><strong>Following:</strong> <span th:text="${following}">0</span></p>
+            <p><strong>Total Commits:</strong> <span th:text="${totalCommits}">0</span></p>
+        </div>
+    </div>
+
+    <div class="repo-section">
+        <div class="repo-header">Your Public Repositories</div>
+        <ul class="repo-list">
+            <li class="repo-item" th:each="repo : ${repositories}">
+                <a th:href="${repo.html_url}" th:text="${repo.name}">Repository Name</a>
+                <p th:text="${repo.description}">Repository Description</p>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
