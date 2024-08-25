@@ -7,8 +7,8 @@ spring:
       client:
         registration:
           github:
-            client-id: your-github-client-id
-            client-secret: your-github-client-secret
+            client-id: Ov23liW2rQRYIeeL25gS
+            client-secret: 17920e1054d70cfe5c9ee302f15dd45261bbbd9f
             scope: user
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
@@ -16,7 +16,8 @@ spring:
             authorization-uri: https://github.com/login/oauth/authorize
             token-uri: https://github.com/login/oauth/access_token
             user-info-uri: https://api.github.com/user
-            user-name-attribute: login
+            user-name-attribute: id
+
 github:
   api:
     url: https://api.github.com
