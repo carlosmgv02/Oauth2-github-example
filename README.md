@@ -24,7 +24,7 @@ Before you begin, make sure you have the following installed:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/oauth2-user-profile.git
+   git clone https://github.com/carlosmgv02/Oauth2-github-example.git
    cd oauth2-user-profile
 ```
  
