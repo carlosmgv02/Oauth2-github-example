@@ -25,7 +25,7 @@ Before you begin, make sure you have the following installed:
 
    ```bash
    git clone https://github.com/carlosmgv02/Oauth2-github-example.git
-   cd oauth2-user-profile
+   cd Oauth2-github-example
 ```
  
 1. **Configure OAuth2 credentials** Open the `src/main/resources/application.yml` file and replace `your-github-client-id` and `your-github-client-secret` with your GitHub OAuth app credentials.
